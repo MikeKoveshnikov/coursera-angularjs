@@ -30,7 +30,7 @@
     <br/>
 
     Phone Number: <input type="phone" required name="phone" ng-model="signUpCtrl.signUpData.phone" pattern="(\d{3})-(\d{3})-(\d{4})" placeholder="Phone ###-###-####"/>
-    <span ng-show="form.$submitted || form.email.$touched">
+    <span ng-show="form.$submitted || form.phone.$touched">
       <span ng-if="form.phone.$invalid">
         Phone is required and must be in the format ###-###-####
       </span>
