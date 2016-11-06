@@ -1,0 +1,53 @@
+<div>
+  <form name="form" novalidate>
+    First name: <input type="text" required name="firstName" ng-model="signUpCtrl.signUpData.firstName" minlength="1" ng-maxlength="30" placeholder="First name (1 - 30 characters)"/>
+    <span ng-show="form.$submitted || form.firstName.$touched">
+      <span ng-if="form.firstName.$error.minlength || form.firstName.$error.required">
+        First name must be at least 1 character long
+      </span>
+      <span ng-if="form.firstName.$error.maxlength">
+        First name must not be longer than 30 characters
+      </span>
+    </span>
+    <br/>
+
+    Last name: <input type="text" required name="lastName" ng-model="signUpCtrl.signUpData.lastName" minlength="1" ng-maxlength="50" placeholder="Last name (1 - 50 characters)"/>
+    <span ng-show="form.$submitted || form.lastName.$touched">
+      <span ng-if="form.lastName.$error.minlength || form.lastName.$error.required">
+        Last name must be at least 1 character long
+      </span>
+      <span ng-if="form.lastName.$error.maxlength">
+        Last name must not be longer than 50 characters
+      </span>
+    </span>
+    <br/>
+
+    Email: <input type="email" required name="email" ng-model="signUpCtrl.signUpData.email" placeholder="Email"/>
+    <span ng-show="form.$submitted || form.email.$touched">
+      <span ng-show="form.email.$error.required">Tell us your email</span>
+      <span ng-show="form.email.$error.email">This is not a valid email</span>
+    </span>
+    <br/>
+
+    Phone Number: <input type="phone" required name="phone" ng-model="signUpCtrl.signUpData.phone" pattern="(\d{3})-(\d{3})-(\d{4})" placeholder="Phone ###-###-####"/>
+    <span ng-show="form.$submitted || form.email.$touched">
+      <span ng-if="form.phone.$invalid">
+        Phone is required and must be in the format ###-###-####
+      </span>
+    </span>
+    <br/>
+
+    Favorite dish number: <input type="text" required ng-model="signUpCtrl.signUpData.favoriteDish" name="dish" dish-check valid-short-names="signUpCtrl.validMenuItemsShortNames" placeholder="A1"/>
+    <span ng-show="form.$submitted || form.dish.$touched">
+      <span ng-show="form.dish.$error.required">Please provide your favorite dish</span>
+      <span ng-show="form.dish.$error.dishCheck">No such menu number exists</span>
+    </span>
+    <br/>
+
+    <input type="submit" ng-click="signUpCtrl.submitData()" value="Submit" ng-disabled="form.$invalid" />
+    <div ng-if="signUpCtrl.signUpSuccessful">
+      Your information has been saved
+    </div>
+
+  </form>
+</div>
